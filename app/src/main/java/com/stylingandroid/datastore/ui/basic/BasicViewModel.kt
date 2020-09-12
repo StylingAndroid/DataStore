@@ -21,9 +21,9 @@ class BasicViewModel @Inject constructor(
     val mutableText = TwoWayBinder(text) { newValue ->
         viewModelScope.launch {
             dataStore.updateData { simpleData ->
-                simpleData.toBuilder()
-                    .setText(newValue)
-                    .build()
+                simpleData.copy(
+                    text = newValue
+                )
             }
         }
     }

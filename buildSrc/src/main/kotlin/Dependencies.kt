@@ -1,16 +1,16 @@
 const val kotlinVersion = "1.4.0"
 const val hiltVersion = "2.28.3-alpha"
+const val wireVersion = "3.2.2"
 
 object BuildPlugins {
     object Version {
-        const val androidBuildToolsVersion = "4.2.0-alpha09"
-        const val protobuf = "0.8.13"
+        const val androidBuildToolsVersion = "4.2.0-alpha10"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Version.androidBuildToolsVersion}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     const val hiltAndroidPlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
-    const val protobufPlugin = "com.google.protobuf:protobuf-gradle-plugin:${Version.protobuf}"
+    const val wirePlugin = "com.squareup.wire:wire-gradle-plugin:$wireVersion"
 
     const val detekt = "io.gitlab.arturbosch.detekt"
     const val ktlint = "org.jlleitschuh.gradle.ktlint"
@@ -37,7 +37,6 @@ object Libraries {
         const val constraintLayout = "2.0.1"
         const val vectorDrawable = "1.2.0-alpha02"
         const val dataStore = "1.0.0-alpha01"
-        const val protobuf = "4.0.0-rc-2"
         const val timber = "4.7.1"
     }
 
@@ -56,7 +55,6 @@ object Libraries {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val vectorDrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
     const val dataStoreCore = "androidx.datastore:datastore-core:${Versions.dataStore}"
-    const val protac = "com.google.protobuf:protoc:${Versions.protobuf}"
-    const val protobufJava = "com.google.protobuf:protobuf-javalite:${Versions.protobuf}"
+    const val wireRuntime = "com.squareup.wire:wire-runtime:$wireVersion"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }

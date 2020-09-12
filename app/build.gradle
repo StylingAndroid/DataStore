@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.protobuf'
+apply plugin: 'com.squareup.wire'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
@@ -29,6 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    sourceSets {
+        main.java.srcDirs += "$buildDir/generated/source/wire"
+    }
     buildFeatures.viewBinding = false
     buildFeatures.dataBinding = true
 }
@@ -46,7 +49,7 @@ dependencies {
     implementation Libraries.constraintLayout
     implementation Libraries.vectorDrawable
     implementation Libraries.dataStoreCore
-    implementation Libraries.protobufJava
+    implementation Libraries.wireRuntime
     implementation Libraries.timber
     implementation Libraries.hilt
     implementation Libraries.hiltLifecycle
@@ -65,26 +68,20 @@ detekt {
 
 ktlint {
     android = true
-    version = "0.36.0"
+    version = "0.38.1"
     ignoreFailures = false
     reporters {
         reporter "plain"
         reporter "checkstyle"
     }
+    filter {
+        exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/source/wire") }
+    }
     outputToConsole = true
 }
 
-protobuf {
-    protoc {
-        artifact = Libraries.protac
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-                java {
-                    option "lite"
-                }
-            }
-        }
+wire {
+    kotlin {
+        android = true
     }
 }
