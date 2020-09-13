@@ -9,10 +9,12 @@ import java.io.OutputStream
 object SimpleDataSerializer : Serializer<SimpleData> {
 
     override fun readFrom(input: InputStream): SimpleData {
-        return try {
+        return if (input.available() != 0) try {
             SimpleData.ADAPTER.decode(input)
         } catch (exception: IOException) {
             throw CorruptionException("Cannot read proto", exception)
+        } else {
+            SimpleData("")
         }
     }
 
