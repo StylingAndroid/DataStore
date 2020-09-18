@@ -1,10 +1,10 @@
-const val kotlinVersion = "1.4.0"
-const val hiltVersion = "2.28.3-alpha"
-const val wireVersion = "3.2.2"
+const val kotlinVersion = "1.4.10"
+const val hiltVersion = "2.29.1-alpha"
+const val wireVersion = "3.3.0"
 
 object BuildPlugins {
     object Version {
-        const val androidBuildToolsVersion = "4.2.0-alpha10"
+        const val androidBuildToolsVersion = "4.2.0-alpha11"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Version.androidBuildToolsVersion}"
@@ -27,7 +27,7 @@ object AndroidSdk {
 object Libraries {
     private object Versions {
         const val appCompat = "1.3.0-alpha02"
-        const val ktx = "1.5.0-alpha02"
+        const val ktx = "1.5.0-alpha03"
         const val hilt = "1.0.0-alpha02"
         const val viewModel = "2.3.0-alpha07"
         const val liveData = "2.3.0-alpha07"

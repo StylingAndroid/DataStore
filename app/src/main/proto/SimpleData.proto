@@ -1,8 +1,8 @@
-syntax = "proto2";
+syntax = "proto3";
 
 option java_package = "com.stylingandroid.datastore.data";
 option java_multiple_files = true;
 
 message SimpleData {
-    required string text = 1;
+    string text = 1;
 }
