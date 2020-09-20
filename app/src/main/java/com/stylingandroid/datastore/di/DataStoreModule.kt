@@ -3,8 +3,8 @@ package com.stylingandroid.datastore.di
 import android.content.Context
 import androidx.datastore.DataStore
 import androidx.datastore.createDataStore
-import com.stylingandroid.datastore.data.SecureSimpleDataSerializer
-import com.stylingandroid.datastore.data.SimpleData
+import com.stylingandroid.datastore.data.ComplexData
+import com.stylingandroid.datastore.data.ComplexDataSerializer
 import com.stylingandroid.datastore.security.Crypto
 import dagger.Module
 import dagger.Provides
@@ -17,12 +17,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 object DataStoreModule {
 
     @Provides
-    fun providesDataStore(
+    fun providesComplexDataStore(
         @ApplicationContext context: Context,
         crypto: Crypto
-    ): DataStore<SimpleData> =
+    ): DataStore<ComplexData> =
         context.createDataStore(
-            fileName = "DataStoreTest.pb",
-            serializer = SecureSimpleDataSerializer(crypto)
+            fileName = "ComplexDataStoreTest.pb",
+            serializer = ComplexDataSerializer(crypto)
         )
 }

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "com.stylingandroid.datastore.data";
+import "SimpleData.proto";
+
+message ComplexData {
+  string text = 1;
+  SimpleData simpleData = 2;
+  enum Internal {
+    ZERO = 0;
+    ONE = 1;
+    TWO = 2;
+  }
+  Internal internal = 3;
+  External external = 4;
+  repeated string names = 5;
+  map<string, int32> ages = 6;
+  oneof myOneof {
+    string oneofString = 7;
+    int32 oneofInt = 8;
+  }
+}
+
+enum External {
+  ZERO = 0;
+  ONE = 1;
+  TWO = 2;
+}
