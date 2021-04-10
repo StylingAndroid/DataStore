@@ -3,8 +3,9 @@
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        gradlePluginPortal()
+        jcenter()
     }
     dependencies {
         classpath BuildPlugins.androidGradlePlugin
@@ -12,30 +13,23 @@ buildscript {
         classpath BuildPlugins.hiltAndroidPlugin
         classpath BuildPlugins.wirePlugin
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath BuildPlugins.versionsPlugin
+        classpath BuildPlugins.detektPlugin
+        classpath BuildPlugins.ktlintPlugin
+        classpath BuildPlugins.canidropjetifierPlugin
     }
-}
-
-plugins {
-    id 'com.github.ben-manes.versions' version '0.33.0'
-    id 'io.gitlab.arturbosch.detekt' version "1.13.1"
-    id 'org.jlleitschuh.gradle.ktlint' version '9.4.0'
-    id "com.github.plnice.canidropjetifier" version "0.5"
 }
 
 subprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
     apply plugin: BuildPlugins.versions
     apply plugin: BuildPlugins.ktlint
     apply plugin: BuildPlugins.detekt
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-    }
+    apply plugin: BuildPlugins.canidropjetifier
 }
 
 task clean(type: Delete) {

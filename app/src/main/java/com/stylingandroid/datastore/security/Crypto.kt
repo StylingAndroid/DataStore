@@ -17,7 +17,6 @@ class CryptoImpl @Inject constructor(private val cipherProvider: CipherProvider)
         with(outputStream) {
             write(cipher.iv.size)
             write(cipher.iv)
-            write(encryptedBytes.size)
             write(encryptedBytes)
         }
     }
@@ -26,9 +25,7 @@ class CryptoImpl @Inject constructor(private val cipherProvider: CipherProvider)
         val ivSize = inputStream.read()
         val iv = ByteArray(ivSize)
         inputStream.read(iv)
-        val encryptedDataSize = inputStream.read()
-        val encryptedData = ByteArray(encryptedDataSize)
-        inputStream.read(encryptedData)
+        val encryptedData = inputStream.readBytes()
         val cipher = cipherProvider.decryptCipher(iv)
         return cipher.doFinal(encryptedData)
     }

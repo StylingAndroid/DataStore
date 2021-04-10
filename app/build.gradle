@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.squareup.wire'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
@@ -29,9 +28,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    sourceSets {
-        main.java.srcDirs += "$buildDir/generated/source/wire"
-    }
     buildFeatures.viewBinding = false
     buildFeatures.dataBinding = true
 }
@@ -48,7 +44,7 @@ dependencies {
     implementation Libraries.material
     implementation Libraries.constraintLayout
     implementation Libraries.vectorDrawable
-    implementation Libraries.dataStoreCore
+    implementation Libraries.dataStore
     implementation Libraries.wireRuntime
     implementation Libraries.timber
     implementation Libraries.hilt
@@ -75,7 +71,7 @@ ktlint {
         reporter "checkstyle"
     }
     filter {
-        exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/source/wire") }
+        exclude("**/generated/**")
     }
     outputToConsole = true
 }

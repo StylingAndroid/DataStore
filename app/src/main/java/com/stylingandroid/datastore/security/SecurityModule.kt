@@ -4,12 +4,12 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import java.security.KeyStore
 import javax.inject.Named
 
 @Module(includes = [SecurityModule.Declarations::class])
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object SecurityModule {
 
     const val KEY_NAME = "Key Name"
@@ -31,7 +31,7 @@ object SecurityModule {
     fun providesKeyStoreName(): String = ANDROID_KEY_STORE_TYPE
 
     @Module
-    @InstallIn(ApplicationComponent::class)
+    @InstallIn(SingletonComponent::class)
     interface Declarations {
 
         @Binds

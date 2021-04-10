@@ -11,8 +11,8 @@ message ComplexData {
     ONE = 1;
     TWO = 2;
   }
-  Internal internal = 3;
-  External external = 4;
+  Internal internalEnum = 3;
+  External externalEnum = 4;
   repeated string names = 5;
   map<string, int32> ages = 6;
   oneof myOneof {

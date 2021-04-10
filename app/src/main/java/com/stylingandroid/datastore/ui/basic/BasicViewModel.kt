@@ -1,6 +1,6 @@
 package com.stylingandroid.datastore.ui.basic
 
-import androidx.datastore.DataStore
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -26,8 +26,8 @@ class BasicViewModel @Inject constructor(
                 complexData.copy(
                     text = newValue,
                     simpleData = SimpleData(text = newValue),
-                    internal = ComplexData.Internal.ONE,
-                    external = External.TWO,
+                    internalEnum = ComplexData.Internal.ONE,
+                    externalEnum = External.TWO,
                     oneofString = "The meaning of life, the universe, and everything"
                 )
             }
